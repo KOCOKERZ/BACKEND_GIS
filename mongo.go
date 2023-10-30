@@ -99,3 +99,11 @@ func IsPasswordValid(mongoconn *mongo.Database, collection string, userdata User
 func CreateNewProduct(mongoconn *mongo.Database, collection string, productdata Product) interface{} {
 	return atdb.InsertOneDoc(mongoconn, collection, productdata)
 }
+
+func InsertUserdata(mongoenv *mongo.Database, collname, username, role, password string) (InsertedID interface{}) {
+	req := new(User)
+	req.Username = username
+	req.Password = password
+	req.Role = role
+	return atdb.InsertOneDoc(mongoenv, collname, req)
+}
