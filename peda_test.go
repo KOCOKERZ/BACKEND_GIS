@@ -14,7 +14,7 @@ import (
 )
 
 func TestUpdateGetData(t *testing.T) {
-	mconn := SetConnection("MONGOULBI", "petapedia")
+	mconn := SetConnection("MONGOSTRING", "petapedia")
 	datagedung := GetAllUser(mconn, "user")
 	fmt.Println(datagedung)
 }
@@ -41,10 +41,10 @@ func TestUpdateGetData(t *testing.T) {
 
 func TestCreateNewUserRole(t *testing.T) {
 	var userdata User
-	userdata.Username = "raulmahya"
-	userdata.Password = "banget"
+	userdata.Username = "ganteng"
+	userdata.Password = "ganteng"
 	userdata.Role = "admin"
-	mconn := SetConnection("MONGOULBI", "petapedia")
+	mconn := SetConnection("MONGOSTRING", "regisGIS")
 	CreateNewUserRole(mconn, "user", userdata)
 }
 
@@ -144,7 +144,7 @@ func TestAllProduct(t *testing.T) {
 }
 
 func TestGeneratePasswordHashh(t *testing.T) {
-	password := "secret"
+	password := "akbar"
 	hash, _ := HashPassword(password) // ignore error for the sake of simplicity
 
 	fmt.Println("Password:", password)
@@ -189,15 +189,15 @@ func TestGeneratePrivateKeyPaseto(t *testing.T) {
 	privateKey, publicKey := watoken.GenerateKey()
 	fmt.Println(privateKey)
 	fmt.Println(publicKey)
-	hasil, err := watoken.Encode("bangsat", privateKey)
+	hasil, err := watoken.Encode("akbar", privateKey)
 	fmt.Println(hasil, err)
 }
 
 func TestHashFunction(t *testing.T) {
 	mconn := SetConnection("mongodb://raulgantengbanget:0nGCVlPPoCsXNhqG@ac-oilbpwk-shard-00-00.9ofhjs3.mongodb.net:27017,ac-oilbpwk-shard-00-01.9ofhjs3.mongodb.net:27017,ac-oilbpwk-shard-00-02.9ofhjs3.mongodb.net:27017/test?replicaSet=atlas-13x7kp-shard-0&ssl=true&authSource=admin", "petapedia")
 	var userdata User
-	userdata.Username = "bangsat"
-	userdata.Password = "ganteng"
+	userdata.Username = "akbar"
+	userdata.Password = "akbar"
 
 	filter := bson.M{"username": userdata.Username}
 	res := atdb.GetOneDoc[User](mconn, "user", filter)

@@ -1,5 +1,7 @@
 package peda
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type GeometryPolygon struct {
 	Coordinates [][][]float64 `json:"coordinates" bson:"coordinates"`
 	Type        string        `json:"type" bson:"type"`
@@ -57,13 +59,14 @@ type Credential struct {
 }
 
 type Product struct {
-	Nomorid     int    `json:"nomorid" bson:"nomorid"`
-	Name        string `json:"name" bson:"name"`
-	Description string `json:"description" bson:"description"`
-	Price       int    `json:"price" bson:"price"`
-	Stock       int    `json:"stock" bson:"stock"`
-	Size        string `json:"size" bson:"size"`
-	Image       string `json:"image" bson:"image"`
+	ID          primitive.ObjectID `bson:"_id,omitempty" `
+	Nomorid     int                `json:"nomorid" bson:"nomorid"`
+	Name        string             `json:"name" bson:"name"`
+	Description string             `json:"description" bson:"description"`
+	Price       int                `json:"price" bson:"price"`
+	Stock       int                `json:"stock" bson:"stock"`
+	Size        string             `json:"size" bson:"size"`
+	Image       string             `json:"image" bson:"image"`
 }
 
 type Response struct {
